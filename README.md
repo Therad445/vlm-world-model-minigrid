@@ -1,17 +1,8 @@
 # World Model Planning with VLM Scoring in MiniGrid
 
-This repository contains a compact experiment that combines a learned world model
-with a vision-language scorer for model-predictive control in MiniGrid.
+This repository contains a small MiniGrid experiment. I train a compact RSSM on RGB rollouts and use it for random-shooting MPC. One planner variant additionally scores decoded rollout frames with CLIP.
 
-The project is intentionally small. It is not a full Dreamer implementation with
-actor-critic training; the focus is on the assignment mechanism:
-
-```text
-real observation -> RSSM latent state -> imagined future frames -> VLM score -> MPC action
-```
-
-The important detail is that the CLIP score is computed on decoded **future**
-frames from imagined rollouts, not only on the current observation.
+The CLIP score is computed on future frames decoded from the learned model rollout.
 
 ## Methods
 
@@ -69,7 +60,8 @@ outputs/plots/                     result plots
 outputs/screenshots/               reconstruction and imagined-rollout checks
 outputs/gifs/wm_vlm_episode.gif    rollout visualization
 logs/full_run.log                  full Colab run log
-report/report.pdf                  final PDF report
+report/report.pdf                  final PDF report in Russian
+report/report_en.pdf               English PDF report
 ```
 
 Large regenerable files such as `outputs/data/transitions.npz` and

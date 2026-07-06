@@ -32,9 +32,7 @@ stable in decoded frames. CLIP can therefore respond to the presence of the
 visible green square rather than to the exact spatial relation between the agent
 and the goal.
 
-This is a useful negative result for the demo: the required mechanism is present,
-but an off-the-shelf VLM is not automatically a reliable scorer for symbolic
-world-model predictions.
+I do not claim that the VLM scorer improves the planner in this run. The experiment shows that the mechanism works technically, but CLIP is not well calibrated for decoded MiniGrid frames.
 
 ## Future work
 
