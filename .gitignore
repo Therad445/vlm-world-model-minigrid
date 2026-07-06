@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environments
+.venv/
+venv/
+.env
+
+# Notebook/Colab local noise
+.ipynb_checkpoints/
+
+# Large regenerable experiment artefacts
+outputs/data/
+outputs/checkpoints/
+*.npz
+*.pt
+*.pth
+
+# Local logs and temporary files
+*.tmp
+*.bak
+.DS_Store

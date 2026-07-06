@@ -1,0 +1,45 @@
+seed: 42
+device: auto
+env:
+  id: MiniGrid-Empty-6x6-v0
+  image_size: 64
+  max_steps: 100
+  action_dim: 3
+data:
+  path: outputs/data/transitions.npz
+  episodes: 240
+  heuristic_fraction: 0.20
+model:
+  deter_dim: 128
+  stoch_dim: 32
+  embed_dim: 256
+  hidden_dim: 256
+train:
+  batch_size: 16
+  sequence_length: 8
+  epochs: 25
+  learning_rate: 0.0003
+  grad_clip: 100.0
+  beta_kl: 0.1
+  free_nats: 1.0
+  reward_scale: 10.0
+  continue_scale: 1.0
+  checkpoint: outputs/checkpoints/rssm.pt
+planner:
+  horizon: 12
+  candidates: 32
+  gamma: 0.99
+  vlm_weight: 2.0
+  vlm_stride: 3
+  action_dim: 3
+vlm:
+  model_name: openai/clip-vit-base-patch32
+  goal: a top-down gridworld where the red triangle agent is standing on the green goal square
+  negatives:
+    - a top-down gridworld where the red triangle agent is far from the green goal square
+    - an empty top-down gridworld with no agent on the green goal square
+    - a red triangle beside but not on a green square
+eval:
+  seeds: [0, 1, 2, 3, 4]
+  episodes_per_seed: 5
+  max_steps: 100
